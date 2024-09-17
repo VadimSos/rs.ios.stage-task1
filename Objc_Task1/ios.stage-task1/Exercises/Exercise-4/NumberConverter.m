@@ -4,13 +4,13 @@
 
 - (NSArray *)numberConverter:(NSNumber *)number {
     // Convert NSNumber to NSString
-    NSString *numberString = [number stringValue];
+    NSString *numberString = number.stringValue;
 
-    // Initialize an NSMutableArray to hold the result
-    NSMutableArray<NSString *> *resultArray = [NSMutableArray array];
+    // Initialize an NSMutableArray with fix length to hold the result
+    NSMutableArray<NSString *> *resultArray = [NSMutableArray arrayWithCapacity: numberString.length];
     
     // Iterate over each character in the string
-    for (NSUInteger i = 0; i < [numberString length]; i++) {
+    for (NSUInteger i = 0; i < numberString.length; i++) {
         unichar character = [numberString characterAtIndex:i];
         NSString *digitString = [NSString stringWithFormat:@"%C", character];
         

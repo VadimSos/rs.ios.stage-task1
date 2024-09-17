@@ -14,7 +14,7 @@
     NSInteger oddCount = 0;
 
     for (NSNumber *number in array) {
-        if ([number integerValue] % 2 != 0) {
+        if (number.integerValue % 2 != 0) {
             oddCount++;
         }
     }
@@ -35,14 +35,14 @@
 
 
 // optimized solution (basic + updated)
-- (NSInteger)oddNumbersOptimize:(nonnull NSArray *)array {
-    return [[array filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
-            return [evaluatedObject integerValue] % 2 != 0;
-        }]] count];
+- (NSInteger)oddNumbersOptimize:(nonnull NSArray <NSNumber *> *)array {
+//    return [[array filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+//            return [evaluatedObject integerValue] % 2 != 0;
+//        }]] count];
     
-//    return [[array filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSNumber *number, NSDictionary *bindings) {
-//        return [number integerValue] % 2 != 0;
-//    }]] count];
+    return [[array filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSNumber *number, NSDictionary *bindings) {
+        return number.integerValue % 2 != 0;
+    }]] count];
 }
 
 @end
